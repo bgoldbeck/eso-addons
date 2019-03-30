@@ -114,6 +114,8 @@ function CamelotCombatTab.UI.MainFrame.Initialize()
 end
 
 function CamelotCombatTab.UI.MainFrame.Update()
+	if CamelotCombatTab.UI.MainFrame.Top == nil then return end
+	
 	CamelotCombatTab.UI.MainFrame.Top.slider:SetMinMax(0, #CamelotCombatTab.Combat.List)
 	CamelotCombatTab.UI.MainFrame.Top.slider:SetValue(#CamelotCombatTab.Combat.List - CamelotCombatTab.UI.MainFrame.offsetIndex)
 	--Loop through combat list stack.

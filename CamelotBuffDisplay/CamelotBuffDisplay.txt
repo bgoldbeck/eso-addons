@@ -18,6 +18,7 @@ Libs/FILO.lua
 ## Source
 CamelotBuffDisplay.lua
 CamelotBuffDisplay.xml
+CamelotBuffDisplayConfig.lua
 
 ## UI
 UI/UI.lua

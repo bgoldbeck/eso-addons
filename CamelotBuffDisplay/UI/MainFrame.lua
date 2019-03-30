@@ -35,7 +35,7 @@ function CBD.UI.MainFrame.Initialize()
 		icon.backdrop = LibUI:CreateBackdrop(CBD.name .. "IconTexture_Backdrop" .. i, icon, {icon:GetWidth(), icon:GetHeight()}, {CENTER, CENTER}, {0, 0}, {0.02, 0.02, 0.02, 0.0}, {0.7, 0.7, 0.4, 0.2}, false) 
 		icon.backdrop:SetDrawLayer(2)
 		
-		icon.status = LibUI:CreateStatusBar(CBD.name .. "_IconStatus" .. i, icon, {icon:GetWidth(), icon:GetHeight() / 7 }, {BOTTOM, BOTTOM}, {0, 0}, {0.9, 0.9, 0.0, 1.0}, BAR_ALIGNMENT_NORMAL, false)
+		icon.status = LibUI:CreateStatusBar(CBD.name .. "_IconStatus" .. i, icon, {icon:GetWidth(), icon:GetHeight() / 7 }, {BOTTOM, BOTTOM}, {0, 0}, {0.2, 0.95, 1.0, 1.0}, BAR_ALIGNMENT_NORMAL, false)
 		icon.status:SetDrawLayer(3)
 		
 		icon.label  = LibUI:CreateLabel(CBD.name .. "IconLabel" .. i, icon, {icon:GetWidth(), icon:GetHeight()}, {CENTER, CENTER}, {0, 0}, nil, nil, nil, "", false)

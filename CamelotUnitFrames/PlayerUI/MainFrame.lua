@@ -11,7 +11,7 @@ function CUF.PlayerUI.MainFrame.Initialize()
 		CUF.savedVars.unitPlayer.expOrRank = 1
 	end
 	
-	local top      = LibUI:CreateTopLevelWindow(CUF.PlayerUI.MainFrame.name .. "_MainFrame_Top", ZO_ActionBar1, {370, 150}, {BOTTOM, TOP}, {CUF.savedVars.unitPlayer.offset[1], CUF.savedVars.unitPlayer.offset[2]})
+	local top      = LibUI:CreateTopLevelWindow(CUF.PlayerUI.MainFrame.name .. "_MainFrame_Top", ZO_ActionBar1, {365, 150}, {BOTTOM, TOP}, {CUF.savedVars.unitPlayer.offset[1], CUF.savedVars.unitPlayer.offset[2]})
     top:SetMouseEnabled(false)
 	top:SetMovable(false)
     top:SetClampedToScreen(true)

@@ -1,7 +1,7 @@
 --Initialize.
 CBD 	   		        = {}
 CBD.name				= "CamelotBuffDisplay"
-CBD.version			    = 0.1
+CBD.version			    = 0.12
 local print             = d
 
 local TimerTable            = {}
@@ -19,7 +19,7 @@ end
 
 --Default Saved Variables.
 CBD.defaults         = {
-	["iconSize"]     = 32,
+	["iconSize"]     = 38,
     ["offset"]       = {0, 0},
 }
 
@@ -31,6 +31,7 @@ function CBD.Initialize(eventCode, addonName)
 	CBD.savedVars = ZO_SavedVars:New('CBD_SAVEDVARIABLES_DB' , 116, nil , CBD.defaults)
 	
 	--Initializers.
+	CBD.Config.Initialize()
 	CBD.Player.Initialize()
 	CBD.UI.Initialize()
 	CBD.UI.MainFrame.Initialize()
