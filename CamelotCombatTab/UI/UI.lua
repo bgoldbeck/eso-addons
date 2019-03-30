@@ -1,0 +1,3 @@
+
+
+CamelotCombatTab.UI = {}

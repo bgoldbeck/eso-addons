@@ -1,0 +1,10 @@
+<GuiXml>
+    <Controls>
+        <TopLevelControl name="CUFUpdateVirtualControl">
+            <OnUpdate>
+                CUF.Update()
+            </OnUpdate>
+        
+        </TopLevelControl>
+    </Controls>
+</GuiXml>

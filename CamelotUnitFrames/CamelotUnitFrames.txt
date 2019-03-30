@@ -1,0 +1,42 @@
+## APIVersion: 100016
+## Title: CamelotUnitFrame by |c00ff00Rando|
+## Version: 0.00
+## Author: Rando
+## SavedVariables: CUF_SAVEDVARIABLES_DB
+
+
+## Libraries:
+Libs/LibStub/LibStub.lua
+Libs/LibAnimation-1.0/LibAnimation.lua
+Libs/LibAddonMenu-2.0/LibAddonMenu-2.0.lua
+Libs/UTF8/utf8data.lua
+Libs/UTF8/utf8.lua
+Libs/LibUI/LibUI.lua
+Libs/Stack.lua
+Libs/FILO.lua
+
+## Source
+CamelotUnitFrames.lua
+CamelotUnitFrames.xml
+CamelotUnitFramesConfig.lua
+
+## Group
+Group/Group.lua
+
+## Player
+Player/Player.lua
+
+## Target
+Target/Target.lua
+
+## PlayerUI
+PlayerUI/PlayerUI.lua
+PlayerUI/MainFrame.lua
+
+## GroupUI
+GroupUI/GroupUI.lua
+GroupUI/MainFrame.lua
+
+## LargeGroupUI
+LargeGroupUI/LargeGroupUI.lua
+LargeGroupUI/MainFrame.lua

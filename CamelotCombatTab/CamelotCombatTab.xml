@@ -1,0 +1,10 @@
+<GuiXml>
+    <Controls>
+        <TopLevelControl name="CombatTabUpdateVirtualControl">
+            <OnUpdate>
+                CamelotCombatTab.Update()
+            </OnUpdate>
+        
+        </TopLevelControl>
+    </Controls>
+</GuiXml>
