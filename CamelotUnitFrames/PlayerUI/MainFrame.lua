@@ -502,62 +502,76 @@ function CUF.PlayerUI.MainFrame.Update()
 	CUF.PlayerUI.MainFrame.top.rankLabel:SetText(CUF.Player.Attributes["rank"])
 	CUF.PlayerUI.MainFrame.top.avARankTexture:SetTexture(GetAvARankIcon(CUF.Player.Attributes["rank"]))
 	
+	buff_name = {}
+	buff_start = {}
+	buff_end = {}
+	buff_slot = {}
+	buff_stack = {}
+	buff_icon = {}
+	buff_type = {}
+	buff_effect = {}
+	count = 1
 	--Target buffs
 	for i = 1, CUF.Target.Attributes["maxBuffs"], 1 do
-		local currentIcon = CUF.PlayerUI.MainFrame.top.Icons[i]
-		if i <= CUF.Target.Attributes["buffCount"] then
-			--name, start, finish, slot, stack, icon, type, effectType, abilityType, statusEffectType = GetUnitBuffInfo('player', i)
-			local name, start, finish, slot, stack, icon, buffType, effectType = GetUnitBuffInfo('reticleover', i)
-			--d(name)
-			CUF.PlayerUI.MainFrame.top.Icons[i]:SetHidden(false)
-			CUF.PlayerUI.MainFrame.top.Icons[i]:SetTexture(icon)
-			--CUF.PlayerUI.MainFrame.top:SetWidth(iconSize * i)
-			--CUF.PlayerUI.MainFrame.top.backdrop:SetWidth(iconSize * i)
-			
-			
-			if effectType == BUFF_EFFECT_TYPE_DEBUFF then     --Debuff.
-				CUF.PlayerUI.MainFrame.top.Icons[i].backdrop:SetEdgeColor(0.7, 0.2, 0.2, 0.6)
-			elseif effectType == BUFF_EFFECT_TYPE_BUFF then   --Buff.
-				CUF.PlayerUI.MainFrame.top.Icons[i].backdrop:SetEdgeColor(0.1, 0.7, 0.1, 0.6)
-			end
-			
-			--Passive ability where start == finish.
-			if start == finish then
-				CUF.PlayerUI.MainFrame.top.Icons[i].backdrop:SetEdgeColor(0.2, 0.7, 0.7, 0.6)
-				CUF.PlayerUI.MainFrame.top.Icons[i].status:SetValue(0.0)
-				currentIcon.label:SetText("")
-			elseif finish > start then
-				local current = (GetGameTimeMilliseconds() / 1000)
-				--local remaining = finish - current
-				local elapsed = current - start
-				local totalTime = finish - start
-
-				local pct = elapsed / totalTime
-				pct = math.abs(pct - 1.0)
-				CUF.PlayerUI.MainFrame.top.Icons[i].status:SetValue(pct)
-				--Remaining time.
-				local remaining = (finish - current) / 60
-				local secsRemaining = remaining * 60
-				local timeStr = ""
-				if secsRemaining > 59 then
-					--Minutes.
-					timeStr = math.floor(secsRemaining/60) .. "m"
-				elseif secsRemaining > 3599 then
-					--Hours.
-					timeStr = math.floor(secsRemaining/60/60) .. "h"
-				elseif secsRemaining > 3599 then
-					--Days.
-					timeStr = math.floor(secsRemaining/24/60/60) .. "d"
-				else
-					--Seconds
-					timeStr = math.floor(secsRemaining) .. "s"
-				end
-				currentIcon.label:SetText(timeStr)
-			end
-		else
-			--Loop through rest of the icons on hide them.
-			CUF.PlayerUI.MainFrame.top.Icons[i]:SetHidden(true)
+		CUF.PlayerUI.MainFrame.top.Icons[i]:SetHidden(true)
+		local name, start, finish, slot, stack, icon, buffType, effectType = GetUnitBuffInfo('reticleover', i)
+		if start ~= finish then
+			buff_name[count] = name
+			buff_start[count] = start
+			buff_end[count] = finish
+			buff_slot[count] = slot
+			buff_stack[count] = stack
+			buff_icon[count] = icon
+			buff_type[count] = buffType
+			buff_effect[count] = effectType
+			count = count + 1
 		end
+	end
+	
+	for i = 1, count - 1, 1 do
+		local currentIcon = CUF.PlayerUI.MainFrame.top.Icons[i]
+		--name, start, finish, slot, stack, icon, type, effectType, abilityType, statusEffectType = GetUnitBuffInfo('player', i)
+		local name, start, finish, slot, stack, icon, buffType, effectType = buff_name[i], buff_start[i], buff_end[i], buff_slot[i], buff_stack[i], buff_icon[i], buff_type[i], buff_effect[i]
+
+		CUF.PlayerUI.MainFrame.top.Icons[i]:SetHidden(false)
+		CUF.PlayerUI.MainFrame.top.Icons[i]:SetTexture(icon)
+		--CUF.PlayerUI.MainFrame.top:SetWidth(iconSize * i)
+		--CUF.PlayerUI.MainFrame.top.backdrop:SetWidth(iconSize * i)
+		
+		
+		if effectType == BUFF_EFFECT_TYPE_DEBUFF then     --Debuff.
+			CUF.PlayerUI.MainFrame.top.Icons[i].backdrop:SetEdgeColor(0.7, 0.2, 0.2, 0.6)
+		elseif effectType == BUFF_EFFECT_TYPE_BUFF then   --Buff.
+			CUF.PlayerUI.MainFrame.top.Icons[i].backdrop:SetEdgeColor(0.1, 0.7, 0.1, 0.6)
+		end
+		
+		local current = (GetGameTimeMilliseconds() / 1000)
+		--local remaining = finish - current
+		local elapsed = current - start
+		local totalTime = finish - start
+
+		local pct = elapsed / totalTime
+		pct = math.abs(pct - 1.0)
+		CUF.PlayerUI.MainFrame.top.Icons[i].status:SetValue(pct)
+		--Remaining time.
+		local remaining = (finish - current) / 60
+		local secsRemaining = remaining * 60
+		local timeStr = ""
+		if secsRemaining > 59 then
+			--Minutes.
+			timeStr = math.floor(secsRemaining/60) .. "m"
+		elseif secsRemaining > 3599 then
+			--Hours.
+			timeStr = math.floor(secsRemaining/60/60) .. "h"
+		elseif secsRemaining > 3599 then
+			--Days.
+			timeStr = math.floor(secsRemaining/24/60/60) .. "d"
+		else
+			--Seconds
+			timeStr = math.floor(secsRemaining) .. "s"
+		end
+		currentIcon.label:SetText(timeStr)
+		
 	end
 	
 	return

@@ -1,0 +1,27 @@
+## APIVersion: 100016
+## Title: CamelotBuffDisplay by |c00ff00Rando|
+## Version: 0.00
+## Author: Rando
+## SavedVariables: CBD_SAVEDVARIABLES_DB
+
+
+## Libraries:
+Libs/LibStub/LibStub.lua
+Libs/LibAnimation-1.0/LibAnimation.lua
+Libs/LibAddonMenu-1.0/LibAddonMenu-1.0.lua
+Libs/UTF8/utf8data.lua
+Libs/UTF8/utf8.lua
+Libs/LibUI/LibUI.lua
+Libs/Stack.lua
+Libs/FILO.lua
+
+## Source
+CamelotBuffDisplay.lua
+CamelotBuffDisplay.xml
+
+## UI
+UI/UI.lua
+UI/MainFrame.lua
+
+## Player
+Player/Player.lua
