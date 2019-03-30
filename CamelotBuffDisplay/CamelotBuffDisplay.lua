@@ -20,7 +20,7 @@ end
 --Default Saved Variables.
 CBD.defaults         = {
 	["iconSize"]     = 32,
-    ["offset"]       = {0, 1035},
+    ["offset"]       = {0, 0},
 }
 
 function CBD.Initialize(eventCode, addonName)
@@ -28,7 +28,7 @@ function CBD.Initialize(eventCode, addonName)
 	if(addonName ~= CBD.name) then return end
 	
 	--Load all saved variables.
-	CBD.savedVars = ZO_SavedVars:New('CBD_SAVEDVARIABLES_DB' , 115, nil , CBD.defaults)
+	CBD.savedVars = ZO_SavedVars:New('CBD_SAVEDVARIABLES_DB' , 116, nil , CBD.defaults)
 	
 	--Initializers.
 	CBD.Player.Initialize()
